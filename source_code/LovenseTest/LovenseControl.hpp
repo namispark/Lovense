@@ -61,7 +61,7 @@ public:
 				break;
 			}
 		}
-		// If the toy is found, then start connecting ...
+		// If the toy is found, then connect with the toy
 		if (toy_found) {
 			// Wait until the toy is connected (Maximum: 10 seconds) 
 			for (int i = 0; i < 10; i++) {
@@ -72,7 +72,7 @@ public:
 					break;
 				}
 				else {
-					// Attempt to connect with toy
+					// Attempt to connect with the toy
 					manager->ConnectToToy(toy_id.c_str());
 				}
 			}
