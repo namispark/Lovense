@@ -7,8 +7,6 @@ In this example it vibrates on the levels 1, 2 and 3.
 For each vibration level the toy vibrates for 2 seconds.
 At the end it will disconnect the toy.
 
-In the attachment you will find:
-
 1. The folder "source_code" contains the C++ code
 In that archive you will find a visual studio project together with the C++ files.
 If you want to compile the visual studio project on your PC, then you need to set the configuration to "Release".
