@@ -37,6 +37,7 @@ public:
 
 	// --- Connect Callback ---
 	virtual void LovenseToyConnectedStatus(const char* szToyID, bool isConnected) {
+		// Set toy_connected flag
 		toy_connected = isConnected;
 	}
 
