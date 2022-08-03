@@ -9,7 +9,7 @@ class LovenseControl : public ILovenseSDKNotify
 public:
 
 	// --- Variables ---
-	CLovenseToyManager* manager = NULL; // Stores pointer to toy manager
+	CLovenseToyManager* manager = NULL; // Stores pointer to the toy manager
 	bool toy_found = false; // Binary flag if toy is found
 	bool toy_connected = false; // Binary flag if toy is connected
 	std::string toy_name; // Toy name
