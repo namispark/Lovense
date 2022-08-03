@@ -7,12 +7,10 @@ using namespace std;
 
 /* --- Wait function ---
 The program needs to wait at least one second between each sent command.
-
 Documentation:
 https://developer.lovense.com/#step-4-connect-lovense-toys-and-send-commands-2
 Quote: "For best results, don't sent toy commands more than once per second."
 */
-
 void waitForSeconds(int seconds) {
 	for (int i = 1; i <= seconds; i++) {
 		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
