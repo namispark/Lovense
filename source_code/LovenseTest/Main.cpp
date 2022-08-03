@@ -5,8 +5,7 @@
 
 using namespace std;
 
-// Wait function
-
+// --- Wait function ---
 void waitForSeconds(int seconds) {
 	for (int i = 1; i <= seconds; i++) {
 		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
@@ -14,9 +13,9 @@ void waitForSeconds(int seconds) {
 	}
 }
 
-// Main function
-
+// --- Main function ---
 int main(void) {
+	
 	// --- Setup System ---
 	LovenseControl control;
 	bool systemReady = control.setupSystem();
