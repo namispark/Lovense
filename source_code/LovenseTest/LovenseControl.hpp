@@ -9,11 +9,11 @@ class LovenseControl : public ILovenseSDKNotify
 public:
 
 	// --- Variables ---
-	CLovenseToyManager* manager = NULL; // stores pointer to toy manager
-	bool toy_found = false; // binary flag if toy is found
-	bool toy_connected = false; // binary flag if toy is connected
-	std::string toy_name; // toy name
-	std::string toy_id; // toy ID
+	CLovenseToyManager* manager = NULL; // Stores pointer to toy manager
+	bool toy_found = false; // Binary flag if toy is found
+	bool toy_connected = false; // Binary flag if toy is connected
+	std::string toy_name; // Toy name
+	std::string toy_id; // Toy ID
 
 	// --- Unused Callbacks ---
 	virtual	void LovenseDidSearchStart() {}
@@ -23,7 +23,7 @@ public:
 	virtual void LovenseSendCmdResult(const char* szToyID, CLovenseToy::CmdType cmd, const char* result, CLovenseToy::Error errorCode) {}
 	virtual	void LovenseDidSendCmdEnd() {}
 
-	// Search Callback
+	// --- Search Callback ---
 	virtual  void LovenseSearchingToys(lovense_toy_info_t* info) {
 		if (info) {
 			// Set toy_found flag
@@ -35,21 +35,21 @@ public:
 		}
 	}
 
-	// Connected Callback
+	// --- Connected Callback ---
 	virtual void LovenseToyConnectedStatus(const char* szToyID, bool isConnected) {
 		toy_connected = isConnected;
 	}
 
-	// Setup System
+	// --- Setup System ---
 	bool setupSystem() {
-		// Get toy manager
+		// Get the toy manager
 		manager = GetLovenseToyManager();
-		// Set developer token
+		// Set the developer token
 		if (manager->SetDeveloperToken(developer_token.c_str())) {
 			// Register callback
 			manager->RegisterEventCallBack(this);
 		}
-		// Start toy search
+		// Start the toy search
 		manager->StartSearchToy();
 		// Wait until the toy is found (Maximum: 10 seconds) 
 		for (int i = 0; i < 10; i++) {
@@ -68,7 +68,7 @@ public:
 				// Wait for 1 second
 				std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 				if (toy_connected) {
-					// If toy is connected, then break the for loop
+					// If the toy is connected, then break the for loop
 					break;
 				}
 				else {
@@ -80,14 +80,16 @@ public:
 		return toy_found && toy_connected;
 	}
 
+	// --- Close System ---
 	void closeSystem() {
-		// Disconnect toy
+		// Disconnect the toy
 		manager->DisConnectedToy(toy_id.c_str());
-		// Release toy manager
+		// Release the toy manager
 		ReleaseLovenseToyManager();
 		manager = NULL;
 	}
 
+	// --- Vibrate Toy ---
 	void vibrateToy(int level) {
 		// Send vibrate command
 		manager->SendCommand(toy_id.c_str(), CLovenseToy::CmdType::COMMAND_VIBRATE, level);
