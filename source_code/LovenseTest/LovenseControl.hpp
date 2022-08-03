@@ -26,18 +26,18 @@ public:
 	// --- Search Callback ---
 	virtual  void LovenseSearchingToys(lovense_toy_info_t* info) {
 		if (info) {
-			// Set toy_found flag
+			// Set the toy_found flag
 			toy_found = true;
-			// save name
+			// Save the toy name
 			toy_name = std::string(info->toy_name);
-			// save ID
+			// Save the toy ID
 			toy_id = std::string(info->toy_id);
 		}
 	}
 
 	// --- Connect Callback ---
 	virtual void LovenseToyConnectedStatus(const char* szToyID, bool isConnected) {
-		// Set toy_connected flag
+		// Set the toy_connected flag
 		toy_connected = isConnected;
 	}
 
