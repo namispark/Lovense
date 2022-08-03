@@ -35,7 +35,7 @@ public:
 		}
 	}
 
-	// --- Connected Callback ---
+	// --- Connect Callback ---
 	virtual void LovenseToyConnectedStatus(const char* szToyID, bool isConnected) {
 		toy_connected = isConnected;
 	}
@@ -56,7 +56,7 @@ public:
 			// Wait for 1 second
 			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 			if (toy_found) {
-				// If toy is found, then stop toy search
+				// If toy is found, then stop the toy search
 				manager->StopSearchToy();
 				break;
 			}
@@ -77,6 +77,7 @@ public:
 				}
 			}
 		}
+		// If the toy is found and connected, then the system is ready 
 		return toy_found && toy_connected;
 	}
 
@@ -91,6 +92,8 @@ public:
 
 	// --- Vibrate Toy ---
 	void vibrateToy(int level) {
+		// Ensure that level is in the interval [0, 20]
+		level = std::min(20, std::max(0, level));
 		// Send vibrate command
 		manager->SendCommand(toy_id.c_str(), CLovenseToy::CmdType::COMMAND_VIBRATE, level);
 	}
