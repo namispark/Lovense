@@ -1,7 +1,7 @@
 # Lovense
 
-Short test program in C++ for Lovense.
-The test program first searches and connects with the nearest toy.
+This is a short test program in C++ for Lovense.
+The program first searches and connects with the nearest toy.
 Then the program sends out commands to vibrate the toy.
 In this example the toy will vibrate on the levels 1, 2 and 3.
 For each vibration level the toy vibrates for 2 seconds.
