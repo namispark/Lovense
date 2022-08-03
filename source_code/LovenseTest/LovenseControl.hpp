@@ -9,9 +9,9 @@ class LovenseControl : public ILovenseSDKNotify
 public:
 
 	// --- Variables ---
-	CLovenseToyManager* manager = NULL; // Stores pointer to the toy manager
-	bool toy_found = false; // Binary flag if toy is found
-	bool toy_connected = false; // Binary flag if toy is connected
+	CLovenseToyManager* manager = NULL; // Stores the pointer to the toy manager
+	bool toy_found = false; // Binary flag if the toy is found
+	bool toy_connected = false; // Binary flag if the toy is connected
 	std::string toy_name; // Toy name
 	std::string toy_id; // Toy ID
 
@@ -57,7 +57,7 @@ public:
 			// Wait for 1 second
 			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 			if (toy_found) {
-				// If toy is found, then stop the toy search
+				// If the toy is found, then stop the toy search
 				manager->StopSearchToy();
 				break;
 			}
@@ -69,7 +69,7 @@ public:
 				// Wait for 1 second
 				std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 				if (toy_connected) {
-					// If the toy is connected, then break the for loop
+					// If the toy is connected, then break the for-loop
 					break;
 				}
 				else {
@@ -93,9 +93,9 @@ public:
 
 	// --- Vibrate Toy ---
 	void vibrateToy(int level) {
-		// Ensure that level is in the interval [0, 20]
+		// Ensure that the level is in the interval [0, 20]
 		level = std::min(20, std::max(0, level));
-		// Send vibrate command
+		// Send the vibrate command
 		manager->SendCommand(toy_id.c_str(), CLovenseToy::CmdType::COMMAND_VIBRATE, level);
 	}
 };
